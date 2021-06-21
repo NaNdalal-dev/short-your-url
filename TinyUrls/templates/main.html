@@ -1,0 +1,55 @@
+{% extends "home.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<em class="alert alert-primary">
+			<h3>
+				URL Shortener
+			</h3>
+		</em>
+		<div class="container">
+			<form method="post" action="/">
+				{% csrf_token %}
+				<div class="form-group">
+					<div class="row">
+						<div class="container">
+							<em class="text text-center">
+								<h4>Enter URL:</h4>
+							</em>
+						</div>		
+						<div class="container">
+							<input type="text" class="form-control" name="url" required>
+						</div>
+						<div class="container" align="center">
+							<input type="submit" class="btn btn-outline-info" name="submit" value="submit">
+						</div>	
+					</div>
+				</div>
+			</form>
+			<div>
+				{% if url%}
+				<div class="container">
+					<input id="ct" type="text" class="form-control" name="url"  value="{{ url }}">
+				</div>
+				<div class="container" align="center">
+							<button id="cb" name="copy" class="btn btn-outline-success">
+								copy
+							</button>
+				</div>	
+				{% elif error %}
+					<div class="container">
+						<div class="row">
+							<em class="alert alert-danger">
+								<h4>
+									{{ error }}
+								</h4>
+							</em>
+						</div>
+					</div>
+				{% endif %}
+			</div>	
+		</div>
+	</div>
+</div>
+{% endblock %}
