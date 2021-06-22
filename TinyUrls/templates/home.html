@@ -15,24 +15,19 @@
   <link rel = "icon" href = "/static/admin/imgs/logo.jpg"
         type = "image/x-icon"> 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  {% if url%}
+  {% load static %}
+  <link rel = "icon" href = "{% static '/imgs/url.jpg' %}"
+        type = "image/x-icon">
   <script>
-      copyTextBtn = document.querySelector('#cb');
-      alert(copyTextBtn)
-      copyTextBtn.addEventListener('click', function(event) {
-        let copyTextarea = document.querySelector('#ct');
-        copyTextarea.focus();
-        copyTextarea.select();
-        try {
-          let successful = document.execCommand('copy');
-          let msg = successful ? 'successful' : 'unsuccessful';
-          alert('Copy text command was ' + msg);
-        } catch(err) {
-          alert('Unable to copy');
-        }
-      });
-</script>
-  {% endif %}
+    function myFunction() {
+  var copyText = document.getElementById("myInput");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); 
+  document.execCommand("copy");
+  alert("URL Copied.");
+} 
+  </script>
    <meta property="og:title" content="URL shortener" />  
    <!--meta property="og:image" content="" />  
    <meta property="og:url" content="{{path}}" /--> 

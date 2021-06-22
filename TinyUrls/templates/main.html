@@ -19,7 +19,11 @@
 							</em>
 						</div>		
 						<div class="container">
+							{% if original_url %}
+							<input type="text" class="form-control" name="url" value="{{ original_url }}" required>
+							{% else %}
 							<input type="text" class="form-control" name="url" required>
+							{% endif %}
 						</div>
 						<div class="container" align="center">
 							<input type="submit" class="btn btn-outline-info" name="submit" value="submit">
@@ -30,10 +34,15 @@
 			<div>
 				{% if url%}
 				<div class="container">
-					<input id="ct" type="text" class="form-control" name="url"  value="{{ url }}">
+							<em class="text text-center">
+								<h4>Tiny URL:</h4>
+							</em>
+				</div>	
+				<div class="container">
+					<input id="myInput" type="text" class="form-control" name="url"  value="{{ url }}">
 				</div>
 				<div class="container" align="center">
-							<button id="cb" name="copy" class="btn btn-outline-success">
+							<button onclick="myFunction()" name="copy" class="btn btn-outline-success">
 								copy
 							</button>
 				</div>	
